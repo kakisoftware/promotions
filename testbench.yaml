@@ -1,0 +1,8 @@
+providers:
+  - KakiSoftware\Promotions\PromotionServiceProvider
+
+migrations:
+  - database/migrations
+
+workbench:
+  install: false
