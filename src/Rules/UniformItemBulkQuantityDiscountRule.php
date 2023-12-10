@@ -21,6 +21,8 @@ class UniformItemBulkQuantityDiscountRule extends RuleBase
      * The apply method calculates the promotional adjustments for a given collection
      * of order items.
      *
+     * TODO: Should check same sku for item bulks
+     *
      * @return PromotionResult An object containing details of the applied promotion rule.
      */
     public function apply(Collection $orderItems): PromotionResult
