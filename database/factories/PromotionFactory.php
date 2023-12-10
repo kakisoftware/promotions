@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use KakiSoftware\Promotions\Promotion;
 use KakiSoftware\Promotions\RuleType;
+use Workbench\App\Models\Item;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\KakiSoftware\Promotions\Promotion>
@@ -59,8 +60,10 @@ class PromotionFactory extends Factory
         ]);
     }
 
-    public function thresholdGiftPromotion($giftItem = null): Factory
+    public function thresholdGiftPromotion(): Factory
     {
+        $item = Item::create(['id' => 99]);
+
         return $this->state(fn (array $attributes) => [
             'type' => RuleType::THRESHOLD_GIFT_PROMOTION->value,
             'name' => '滿額大好禮',
@@ -68,7 +71,7 @@ class PromotionFactory extends Factory
             'started_at' => '2023-12-01 00:00:00',
             'ended_at' => '2023-12-30 23:59:59',
             'is_active' => true,
-            'parameters' => ['threshold' => 2000, 'gift_item_id' => $giftItem->id],
+            'parameters' => ['threshold' => 2000, 'gift_item_id' => $item->id],
         ]);
     }
 }
