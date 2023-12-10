@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Promotion extends Model
 {
@@ -38,6 +39,14 @@ class Promotion extends Model
         'is_active' => 'boolean',
         'parameters' => AsCollection::class,
     ];
+
+    /**
+     * Get the parent promotionable model
+     */
+    public function promotionable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Create a new factory instance for the model.

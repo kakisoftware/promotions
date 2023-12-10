@@ -62,8 +62,6 @@ class PromotionFactory extends Factory
 
     public function thresholdGiftPromotion(): Factory
     {
-        $item = Item::create(['id' => 99]);
-
         return $this->state(fn (array $attributes) => [
             'type' => RuleType::THRESHOLD_GIFT_PROMOTION->value,
             'name' => '滿額大好禮',
@@ -71,7 +69,7 @@ class PromotionFactory extends Factory
             'started_at' => '2023-12-01 00:00:00',
             'ended_at' => '2023-12-30 23:59:59',
             'is_active' => true,
-            'parameters' => ['threshold' => 2000, 'gift_item_id' => $item->id],
+            'parameters' => ['threshold' => 2000, 'gift_item_id' => Item::create()->create()->id],
         ]);
     }
 }

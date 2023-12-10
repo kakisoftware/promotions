@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->id();
+            $table->morphs('promotionable');
             $table->string('type', 50);
             $table->string('name');
             $table->string('description');

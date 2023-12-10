@@ -4,19 +4,13 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use KakiSoftware\Promotions\Promotion;
 use KakiSoftware\Promotions\PromotionManager;
+use Workbench\App\Models\Item;
+use Workbench\App\Models\Store;
 
 beforeEach(function () {
-    //    $item = new class extends Model
-    //    {
-    //        public $id = 99;
-    //    };
-    //
-    //    $mockItem = Mockery::mock('alias:App\Models\Item');
-    //    $mockItem->shouldReceive('find')->with($item->id)->andReturn($item);
-    Config::set('promotion.models.item', \Workbench\App\Models\Item::class);
+    Config::set('promotion.models.item', Item::class);
 
-    //    $this->promotion = Promotion::factory()->thresholdGiftPromotion($item)->create();
-    $this->promotion = Promotion::factory()->thresholdGiftPromotion()->create();
+    $this->promotion = Promotion::factory()->for(Store::create(), 'promotionable')->thresholdGiftPromotion()->create();
     $this->promotions = new Collection;
     $this->promotionRules = PromotionManager::load();
 });

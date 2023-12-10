@@ -3,9 +3,10 @@
 use Illuminate\Support\Collection;
 use KakiSoftware\Promotions\Promotion;
 use KakiSoftware\Promotions\PromotionManager;
+use Workbench\App\Models\Store;
 
 beforeEach(function () {
-    Promotion::factory()->buildQuantityDiscount()->create();
+    Promotion::factory()->for(Store::create(), 'promotionable')->buildQuantityDiscount()->create();
 
     $this->promotions = new Collection;
     $this->promotionRules = PromotionManager::load();
