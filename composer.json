@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "laravel/pint": "*",
+        "mockery/mockery": "^1.6",
         "orchestra/testbench": "^8.17",
         "pestphp/pest": "^2.9"
     },

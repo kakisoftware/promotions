@@ -4,6 +4,7 @@ npm-debug.log
 yarn-error.log
 .DS_Store
 .idea/
+coverage/
 
 # Laravel 4 specific
 bootstrap/compiled.php

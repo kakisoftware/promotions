@@ -3,7 +3,9 @@
 namespace KakiSoftware\Promotions\Rules;
 
 use App\Models\Item;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Config;
 use KakiSoftware\Promotions\PromotionResult;
 use KakiSoftware\Promotions\RuleBase;
 
@@ -40,10 +42,12 @@ class ThresholdGiftPromotionRule extends RuleBase
     /**
      * Retrieves the gift item based on the gift item ID specified in the parameters.
      *
-     * @return Item The gift item associated with the promotion.
+     * @return Model The gift item associated with the promotion.
      */
-    protected function getGiftItem(): Item
+    protected function getGiftItem(): Model
     {
-        return Item::find($this->parameters->get('gift_item_id'));
+        $itemModel = Config::get('promotion.models.item');
+
+        return $itemModel::find($this->parameters->get('gift_item_id'));
     }
 }

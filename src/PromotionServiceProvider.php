@@ -11,6 +11,8 @@ class PromotionServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/promotion.php', 'promotion');
+
         $this->app->bind(RuleFactory::class, fn () => new RuleFactory);
     }
 
