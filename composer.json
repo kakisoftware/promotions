@@ -35,6 +35,13 @@
             "Workbench\\Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KakiSoftware\\Promotions\\PromotionServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "lint": "pint",
         "test": [
