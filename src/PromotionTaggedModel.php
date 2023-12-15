@@ -17,8 +17,13 @@ class PromotionTaggedModel extends Model
      */
     protected $table = 'promotion_tagged_models';
 
-    public function promotionTaggable(): MorphTo
+    public function taggable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function tag()
+    {
+        return $this->belongsTo(PromotionTag::class, 'promotion_tag_id');
     }
 }

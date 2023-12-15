@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('promotion_tagged_models', function (Blueprint $table) {
             $table->id();
-            $table->morphs('promotion_taggable');
+            $table->morphs('taggable');
             $table->foreignId('promotion_tag_id');
             $table->timestamps();
         });

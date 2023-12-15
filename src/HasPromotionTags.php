@@ -9,8 +9,8 @@ trait HasPromotionTags
     /**
      * Get the promotion
      */
-    public function taggable(): MorphMany
+    public function promotionTags(): MorphMany
     {
-        return $this->morphMany(PromotionTaggedModel::class, 'promotionTaggable');
+        return $this->morphMany(PromotionTaggedModel::class, 'taggable');
     }
 }
