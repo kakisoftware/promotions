@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Promotion extends Model
 {
@@ -46,6 +47,11 @@ class Promotion extends Model
     public function promotionable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function tag(): MorphOne
+    {
+        return $this->morphOne(Tag::class, 'tagable');
     }
 
     /**

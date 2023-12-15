@@ -39,7 +39,8 @@ class RuleFactory
         $name = $promotion->name;
         $description = $promotion->description;
         $parameters = $promotion->parameters;
+        $tag = $promotion->tag;
 
-        return $promotion->type->toRule($name, $description, $parameters);
+        return $promotion->type->toRule($name, $description, $parameters, $tag);
     }
 }
