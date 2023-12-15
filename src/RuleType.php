@@ -3,10 +3,10 @@
 namespace KakiSoftware\Promotions;
 
 use Illuminate\Support\Collection;
+use KakiSoftware\Promotions\Rules\SameItemBuyXGetYFreeRule;
 use KakiSoftware\Promotions\Rules\StorewideDiscountRule;
 use KakiSoftware\Promotions\Rules\ThresholdGiftPromotionRule;
 use KakiSoftware\Promotions\Rules\UniformItemBulkQuantityDiscountRule;
-use KakiSoftware\Promotions\Rules\SameItemBuyXGetYFreeRule;
 
 /**
  * The RuleType enum defines the various types of promotion rules available.
@@ -47,13 +47,13 @@ enum RuleType: string
      * @param  Collection  $parameters Parameters required to instantiate the promotion rule.
      * @return RuleContract The instantiated promotion rule object.
      */
-    public function toRule(string $name, string $description, Collection $parameters, ?Tag $tag): RuleContract
+    public function toRule(string $name, string $description, Collection $parameters, ?Collection $tags): RuleContract
     {
         return new (match ($this) {
             self::STOREWIDE_DISCOUNT => StorewideDiscountRule::class,
             self::UNIFORM_ITEM_BULK_QUANTITY_DISCOUNT => UniformItemBulkQuantityDiscountRule::class,
             self::SAME_ITEM_BUY_X_GET_Y_FREE_RULE => SameItemBuyXGetYFreeRule::class,
             self::THRESHOLD_GIFT_PROMOTION => ThresholdGiftPromotionRule::class,
-        })($name, $description, $parameters, $tag);
+        })($name, $description, $parameters, $tags);
     }
 }

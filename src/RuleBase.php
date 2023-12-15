@@ -38,7 +38,7 @@ abstract class RuleBase implements RuleContract
         public string $name,
         public string $description,
         public Collection $parameters,
-        public ?Tag $tag,
+        public ?Collection $tags,
     ) {
         $this->matchedItems = new Collection;
         $this->giftItems = new Collection;

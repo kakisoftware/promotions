@@ -2,15 +2,11 @@
 
 namespace KakiSoftware\Promotions;
 
-use Database\Factories\PromotionFactory;
-use Illuminate\Database\Eloquent\Casts\AsCollection;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-class Tag extends Model
+class PromotionTaggedModel extends Model
 {
     use HasFactory;
 
@@ -19,5 +15,10 @@ class Tag extends Model
      *
      * @var string
      */
-    protected $table = 'tags';
+    protected $table = 'promotion_tagged_models';
+
+    public function promotionTaggable(): MorphTo
+    {
+        return $this->morphTo();
+    }
 }

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Promotion extends Model
 {
@@ -49,9 +49,9 @@ class Promotion extends Model
         return $this->morphTo();
     }
 
-    public function tag(): MorphOne
+    public function tags(): HasMany
     {
-        return $this->morphOne(Tag::class, 'tagable');
+        return $this->hasMany(PromotionTag::class);
     }
 
     /**

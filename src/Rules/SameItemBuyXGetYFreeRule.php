@@ -5,8 +5,6 @@ namespace KakiSoftware\Promotions\Rules;
 use Illuminate\Support\Collection;
 use KakiSoftware\Promotions\PromotionResult;
 use KakiSoftware\Promotions\RuleBase;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 
 /**
  * The UniformItemBulkQuantityDiscountRule class is a promotion rule that applies a discount
@@ -32,13 +30,11 @@ class SameItemBuyXGetYFreeRule extends RuleBase
         foreach ($orderItems as $orderItem) {
             if ($orderItem->item->promotions->contains('id', $this->tag->id) && $orderItem->quantity >= $this->parameters->get('threshold')) {
                 $this->matchedItems->add($orderItems);
-                for ($i=0; $i<$this->parameters->get('gift_quantity'); $i++) {
+                for ($i = 0; $i < $this->parameters->get('gift_quantity'); $i++) {
                     $this->giftItems->add($orderItem->item);
                 }
             }
         }
-
-        // dd($this->giftItems);
 
         return new PromotionResult(
             ruleName: $this->name,
