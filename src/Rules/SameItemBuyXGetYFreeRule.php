@@ -30,7 +30,6 @@ class SameItemBuyXGetYFreeRule extends RuleBase
         foreach ($orderItems as $orderItem) {
             if ($orderItem->item->promotionTags->intersect($this->tags)->count() > 0
                 && $orderItem->quantity >= $this->parameters->get('threshold')
-                && $orderItem->sku->unit_id == $this->parameters->get('unit_id')
             ) {
                 $this->matchedItems->add($orderItems);
                 for ($i = 0; $i < $this->parameters->get('gift_quantity'); $i++) {
