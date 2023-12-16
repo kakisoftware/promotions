@@ -1,6 +1,5 @@
 {
     "name": "kakisoftware/promotions",
-    "version": "1.0.0",
     "description": "Promotions is a comprehensive Laravel solution for managing and implementing various promotional campaigns and discount strategies",
     "type": "library",
     "license": "MIT",
