@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Promotion extends Model
@@ -46,6 +47,11 @@ class Promotion extends Model
     public function promotionable(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function tags(): HasMany
+    {
+        return $this->hasMany(PromotionTag::class);
     }
 
     /**

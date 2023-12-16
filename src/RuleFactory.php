@@ -36,10 +36,11 @@ class RuleFactory
      */
     private function make(Promotion $promotion): RuleContract
     {
-        $name = $promotion->name;
-        $description = $promotion->description;
-        $parameters = $promotion->parameters;
-
-        return $promotion->type->toRule($name, $description, $parameters);
+        return $promotion->type->toRule(
+            $promotion->name,
+            $promotion->description,
+            $promotion->parameters,
+            $promotion->tags
+        );
     }
 }
