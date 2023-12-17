@@ -13,4 +13,6 @@ trait HasPromotionTags
     {
         return $this->morphMany(PromotionTaggedModel::class, 'taggable');
     }
+
+    abstract public function validPromotions();
 }
