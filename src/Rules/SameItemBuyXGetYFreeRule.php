@@ -28,7 +28,10 @@ class SameItemBuyXGetYFreeRule extends RuleBase
     public function apply(Collection $orderItems): PromotionResult
     {
         foreach ($orderItems as $orderItem) {
-            if ($orderItem->item->promotionTags->intersect($this->tags)->count() > 0
+
+            $itemTaggedPromotionTags = $orderItem->item->promotionTags->map(fn ($promotionTag) => $promotionTag->tag);
+
+            if ($itemTaggedPromotionTags->intersect($this->tags)->count() > 0
                 && $orderItem->quantity >= $this->parameters->get('threshold')
             ) {
                 $this->matchedItems->add($orderItems);
