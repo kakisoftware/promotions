@@ -28,7 +28,7 @@ class SameItemBuyXGetYFreeRule extends RuleBase
     public function apply(Collection $orderItems): PromotionResult
     {
         foreach ($orderItems as $orderItem) {
-//            $itemTaggedPromotionTags = $orderItem->item->promotionTags->map(fn ($promotionTag) => $promotionTag->tag);
+            //            $itemTaggedPromotionTags = $orderItem->item->promotionTags->map(fn ($promotionTag) => $promotionTag->tag);
             $itemTaggedPromotionTags = $orderItem->item->validPromotions()->map(fn ($promotionTag) => $promotionTag->tag);
 
             if ($itemTaggedPromotionTags->intersect($this->tags)->count() > 0
