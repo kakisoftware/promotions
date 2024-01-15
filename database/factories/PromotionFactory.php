@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use KakiSoftware\Promotions\Promotion;
 use KakiSoftware\Promotions\RuleType;
@@ -40,8 +41,8 @@ class PromotionFactory extends Factory
             'type' => RuleType::STOREWIDE_DISCOUNT->value,
             'name' => '全館8折',
             'description' => '新店開幕慶',
-            'started_at' => '2023-12-01 00:00:00',
-            'ended_at' => '2023-12-30 23:59:59',
+            'started_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+            'ended_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_active' => true,
             'parameters' => ['discount' => 80],
         ]);
@@ -53,8 +54,8 @@ class PromotionFactory extends Factory
             'type' => RuleType::UNIFORM_ITEM_BULK_QUANTITY_DISCOUNT->value,
             'name' => '同商品任 2 箱結帳 88 折',
             'description' => '熱銷飲品 限時優惠',
-            'started_at' => '2023-12-01 00:00:00',
-            'ended_at' => '2023-12-30 23:59:59',
+            'started_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+            'ended_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_active' => true,
             'parameters' => ['unit_id' => 'box', 'threshold' => 2, 'discount' => 88],
         ]);
@@ -66,8 +67,8 @@ class PromotionFactory extends Factory
             'type' => RuleType::THRESHOLD_GIFT_PROMOTION->value,
             'name' => '滿額大好禮',
             'description' => '滿2000，送好禮',
-            'started_at' => '2023-12-01 00:00:00',
-            'ended_at' => '2023-12-30 23:59:59',
+            'started_at' => Carbon::now()->subDays(7)->format('Y-m-d H:i:s'),
+            'ended_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'is_active' => true,
             'parameters' => ['threshold' => 2000, 'gift_item_id' => Item::create()->create()->id],
         ]);
