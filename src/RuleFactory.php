@@ -16,7 +16,7 @@ class RuleFactory
      *
      * @return Collection A collection of instantiated promotion rule objects.
      */
-    public function load(): Collection
+    public function load($storeId = null): Collection
     {
         $today = Carbon::now();
 
@@ -24,6 +24,7 @@ class RuleFactory
             ->where('started_at', '<=', $today)
             ->where('ended_at', '>=', $today)
             ->where('is_active', true)
+            ->when($storeId, fn ($query) => $query->where('promotionable_id', $storeId))
             ->get()
             ->map(fn ($promotion) => $this->make($promotion));
     }
